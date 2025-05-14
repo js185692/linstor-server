@@ -108,6 +108,10 @@ import com.google.inject.name.Names;
 import org.slf4j.MDC;
 import org.slf4j.event.Level;
 
+import java.net.InetSocketAddress;
+import com.sun.net.httpserver.HttpServer;
+import jpprof.PprofHttpHandler;
+
 /**
  * linstor controller prototype
  *
@@ -486,10 +490,16 @@ public final class Controller
         return dbType;
     }
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws java.io.IOException
     {
         System.out.printf("%s, Module %s\n", LinStor.PROGRAM, LinStor.CONTROLLER_MODULE);
         LinStor.printStartupInfo();
+
+        System.out.println("Starting JPProf server on port 4001...");
+        var server = HttpServer.create(new InetSocketAddress(4001), 0);
+        server.createContext("/", new PprofHttpHandler());
+        server.start();
+        System.out.println("JPProf server started!");
 
         CtrlConfig cfg = new CtrlConfig(args);
 
