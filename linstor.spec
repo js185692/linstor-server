@@ -113,6 +113,7 @@ Requires(post): jre-11-headless
 Linstor controller manages linstor satellites and persistant data storage.
 
 
+%define _unpackaged_files_terminate_build 0
 %files controller -f %{_builddir}/%{NAME_VERS}/controller/jar.deps
 %dir %{LS_PREFIX}
 %dir %{LS_PREFIX}/lib
