@@ -18,8 +18,9 @@ RUN usermod -a -G wheel makepkg # !lbbuild
 RUN yum install -y rpm-build wget unzip which make git java-11-openjdk-devel python3 && yum clean all -y # !lbbuild
 
 # one can not comment COPY
-RUN cd /tmp && wget https://pkg.linbit.com/downloads/linstor/$LINSTOR_TGZ # !lbbuild
+# RUN cd /tmp && wget https://pkg.linbit.com/downloads/linstor/$LINSTOR_TGZ # !lbbuild
 # =lbbuild COPY /${LINSTOR_TGZ} /tmp/
+COPY linstor-server-1.31.0.tar.gz /tmp
 
 # =lbbuild COPY /pkgcache/* /tmp/pkgcache/
 

@@ -16,7 +16,8 @@ GENSRC=./server/generated-src
 VERSINFO=$(GENRES)/version-info.properties
 
 # echo v0.1 to get it started
-VERSION ?= $(shell echo $(shell git describe --tags || echo "v0.1") | sed -e 's/^v//;s/^[^0-9]*//;s/\(.*\)-g/\1-/')
+# VERSION ?= $(shell echo $(shell git describe --tags || echo "v0.1") | sed -e 's/^v//;s/^[^0-9]*//;s/\(.*\)-g/\1-/')
+VERSION = 1.31.0
 GITHASH := $(shell git rev-parse HEAD)
 DEBVERSION = $(shell echo $(VERSION) | sed -e 's/-/~/g')
 
